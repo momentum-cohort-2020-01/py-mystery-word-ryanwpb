@@ -9,7 +9,9 @@ class Game():
         with open('words.txt', 'r') as f:
             data = f.read()
             word_list = data.splitlines()
-            print(word_list)
+            random_word = random.choice(word_list)
+            word_length = len(random_word)
+            print(random_word, word_length)
 
 
 class Player():
