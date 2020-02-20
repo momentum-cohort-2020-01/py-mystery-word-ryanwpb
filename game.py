@@ -16,13 +16,14 @@ class Game():
             word_length = len(random_word)
             new_list = ['_'] * word_length
             letters = list(random_word.lower())
-            print(letters)
         while self.playing:
             choice = input("Please guess a letter \n")
             choice.lower()
             if choice in letters:
                 print(choice, "is correct!")
+                index_pos_list = self.get_index_pos(letters, choice)
                 print(letters)
+                print(index_pos_list)
             elif choice not in letters:
                 print("Try again.")
                 print(letters)
@@ -30,6 +31,18 @@ class Game():
                 choice.lower()
             else:
                 print("Use letters a-z only")
+
+    def get_index_pos(self, letters, choice):
+        index_pos_list = []
+        index_pos = 0
+        while True:
+            try:
+                index_pos = letters.index(choice, index_pos)
+                index_pos_list.append(index_pos)
+                index_pos += 1
+            except:
+                break
+            return index_pos_list
 
 
 class Player():
