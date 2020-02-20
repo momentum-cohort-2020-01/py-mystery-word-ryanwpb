@@ -1,14 +1,15 @@
 import random
 
-with open('words.txt', 'r') as f:
-    data = f.read()
-
 
 class Game():
     def __init__(self):
         self.player = Player()
-        self.list = open("words.txt", "r")
-        print(self.list.read())
+
+    def get_list(self):
+        with open('words.txt', 'r') as f:
+            data = f.read()
+            word_list = data.splitlines()
+            print(word_list)
 
 
 class Player():
@@ -16,4 +17,4 @@ class Player():
         pass
 
 
-Game()
+Game().get_list()
