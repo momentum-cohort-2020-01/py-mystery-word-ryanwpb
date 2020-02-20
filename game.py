@@ -10,7 +10,7 @@ class Game():
     def start_game(self):
 
         while self.playing:
-            text = input("(P)lay or (S)top")
+            text = input("(P)lay or (S)top \n")
 
             if text == "p":
                 print("Welcome to Word Fuckery")
