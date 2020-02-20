@@ -11,7 +11,8 @@ class Game():
             word_list = data.splitlines()
             random_word = random.choice(word_list)
             word_length = len(random_word)
-            print(random_word, word_length)
+            l = ['_'] * word_length
+            print(l)
 
 
 class Player():
