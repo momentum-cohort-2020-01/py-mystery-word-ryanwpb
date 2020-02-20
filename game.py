@@ -15,14 +15,19 @@ class Game():
             random_word = random.choice(word_list)
             word_length = len(random_word)
             new_list = ['_'] * word_length
-            letters = list(random_word)
-            print(new_list)
+            letters = list(random_word.lower())
+            print(letters)
         while self.playing:
             choice = input("Please guess a letter \n")
-            print(new_list)
+            choice.lower()
+            if choice in letters:
+                print(choice, "is correct!")
+                print(letters)
+            elif choice not in letters:
+                print("Try again.")
+                print(letters)
             if choice.isalpha():
                 choice.lower()
-                break
             else:
                 print("Use letters a-z only")
 
