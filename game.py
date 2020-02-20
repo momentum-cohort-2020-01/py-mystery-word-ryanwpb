@@ -4,6 +4,19 @@ import random
 class Game():
     def __init__(self):
         self.player = Player()
+        self.playing = True
+        self.start_game()
+
+    def start_game(self):
+
+        while self.playing:
+            text = input("(P)lay or (S)top")
+
+            if text == "p":
+                print("Welcome to Word Fuckery")
+                self.get_list()
+            elif text == "s":
+                self.playing = False
 
     def get_list(self):
         with open('words.txt', 'r') as f:
@@ -20,4 +33,4 @@ class Player():
         pass
 
 
-Game().get_list()
+Game()
