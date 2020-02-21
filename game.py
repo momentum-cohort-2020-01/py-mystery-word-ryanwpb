@@ -17,21 +17,33 @@ class Game():
             new_list = ['_'] * word_length
             letters = list(random_word.lower())
         while self.playing:
-            print(letters)
+            print(new_list)
             choice = input("Please guess a letter \n")
             choice.lower()
-            if choice in letters:
-                print(choice, "is correct!")
-                index_pos_list = self.get_index_pos(letters, choice)
-                print(letters)
-                print(index_pos_list)
-            elif choice not in letters:
-                print("Try again.")
-                print(letters)
-            if choice.isalpha():
-                choice.lower()
-            else:
-                print("Use letters a-z only")
+            if choice.isalpha() and len(choice) == 1:
+                if choice in new_list:
+                    print("Already guessed that letter.")
+                elif choice in letters:
+                    # print ("Correct!") This works
+                    index_position_list = self.get_index_pos(
+                        letters, choice)  # This is a list
+                    # print (len(index_position_list)) #Provides length of one if there's only one instance of it.
+                    choice_list = len(index_position_list)*[choice, ]
+                    # print(choice_list)
+                    for (index, choice) in zip(index_position_list, choice_list):
+                        new_list[index] = choice
+                    print(new_list)
+                elif choice not in letters:
+                    print("Try again.")
+                    print(letters)
+                    self.player.guesses_remaining -= 1
+                    print("You have", self.player.guesses_remaining,
+                          "Guesses Remaining")
+                if self.player.guesses_remaining == 0:
+                    self.playing = False
+                    print("Word Fuckery has Defeated YOU!!!")
+                else:
+                    print("Use letters a-z only")
 
     def get_index_pos(self, letters, choice):
         index_pos_list = []
@@ -43,12 +55,12 @@ class Game():
                 index_pos += 1
             except:
                 break
-            return index_pos_list
+        return index_pos_list
 
 
 class Player():
     def __init__(self):
-        pass
+        self.guesses_remaining = 8
 
 
 Game()
