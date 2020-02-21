@@ -21,10 +21,12 @@ class Game():
             choice = input("Please guess a letter \n")
             choice.lower()
             if choice.isalpha() and len(choice) == 1:
+                if choice == int:
+                    print("You must enter a letter a-z!")
                 if choice in new_list:
                     print("Already guessed that letter.")
                 elif choice in letters:
-                    print("Correct!")
+                    print("Correct there is", len(choice), choice)
                     index_position_list = self.get_index_pos(
                         letters, choice)  # This is a list
                     # print (len(index_position_list)) #Provides length of one if there's only one instance of it.
@@ -32,10 +34,9 @@ class Game():
                     # print(choice_list)
                     for (index, choice) in zip(index_position_list, choice_list):
                         new_list[index] = choice
-                    print(new_list)
+                    # print(new_list)
                 elif choice not in letters:
                     print("Try again.")
-                    print(new_list)
                     self.player.guesses_remaining -= 1
                     print("You have", self.player.guesses_remaining,
                           "Guesses Remaining")
@@ -46,8 +47,6 @@ class Game():
                         self.playing = False
                     elif restart == "y":
                         self.start_game()
-                elif choice == int:
-                    print("Use letters a-z only")
 
     def get_index_pos(self, letters, choice):
         index_pos_list = []
