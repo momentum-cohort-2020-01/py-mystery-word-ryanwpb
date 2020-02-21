@@ -24,7 +24,7 @@ class Game():
                 if choice in new_list:
                     print("Already guessed that letter.")
                 elif choice in letters:
-                    # print ("Correct!") This works
+                    print("Correct!")
                     index_position_list = self.get_index_pos(
                         letters, choice)  # This is a list
                     # print (len(index_position_list)) #Provides length of one if there's only one instance of it.
@@ -35,14 +35,18 @@ class Game():
                     print(new_list)
                 elif choice not in letters:
                     print("Try again.")
-                    print(letters)
+                    print(new_list)
                     self.player.guesses_remaining -= 1
                     print("You have", self.player.guesses_remaining,
                           "Guesses Remaining")
                 if self.player.guesses_remaining == 0:
-                    self.playing = False
-                    print("Word Fuckery has Defeated YOU!!!")
-                else:
+                    print("Word Fuckery has Defeated YOU!!! \n")
+                    restart = input("Care to play again? (y) or (n)")
+                    if restart == "n":
+                        self.playing = False
+                    elif restart == "y":
+                        self.start_game()
+                elif choice == int:
                     print("Use letters a-z only")
 
     def get_index_pos(self, letters, choice):
