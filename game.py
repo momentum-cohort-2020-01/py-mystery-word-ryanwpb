@@ -25,7 +25,6 @@ class Game():
                 if choice in new_list:
                     print("Already guessed that letter.")
                 elif choice in letters:
-                    print("Correct, there is", count, choice)
                     index_position_list = self.get_index_pos(
                         letters, choice)  # This is a list
                     # print (len(index_position_list)) #Provides length of one if there's only one instance of it.
@@ -56,6 +55,10 @@ class Game():
                         self.playing = False
                     elif restart == "y":
                         Game()
+                if count >= 2:
+                    print("Correct, there are", count, choice+"'s.")
+                elif count == 1:
+                    print("Correct, there is", count, choice+".")
 
     def get_index_pos(self, letters, choice):
         index_pos_list = []
