@@ -19,12 +19,13 @@ class Game():
         while self.playing:
             print(new_list)
             choice = input("Please guess a letter \n")
+            count = letters.count(choice)
             choice.lower()
             if choice.isalpha() and len(choice) == 1:
                 if choice in new_list:
                     print("Already guessed that letter.")
                 elif choice in letters:
-                    print("Correct, there is", len(* choice), choice)
+                    print("Correct, there is", count, choice)
                     index_position_list = self.get_index_pos(
                         letters, choice)  # This is a list
                     # print (len(index_position_list)) #Provides length of one if there's only one instance of it.
@@ -48,6 +49,7 @@ class Game():
                         Game()
 
                 if '_' not in new_list:
+                    print(new_list)
                     print("Winner, Winner, Chicken Dinner!")
                     restart = input("Care to play again? (y) or (n)")
                     if restart == "n":
