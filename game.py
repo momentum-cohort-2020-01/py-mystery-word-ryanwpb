@@ -17,7 +17,6 @@ class Game():
             new_list = ['_'] * word_length
             letters = list(random_word.lower())
         while self.playing:
-            print(letters)
             print(new_list)
             choice = input("Please guess a letter \n")
             choice.lower()
