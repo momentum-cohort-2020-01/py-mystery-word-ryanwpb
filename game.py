@@ -17,6 +17,7 @@ class Game():
             new_list = ['_'] * word_length
             letters = list(random_word.lower())
         while self.playing:
+            print(letters)
             print(new_list)
             choice = input("Please guess a letter \n")
             choice.lower()
@@ -38,8 +39,17 @@ class Game():
                     self.player.guesses_remaining -= 1
                     print("You have", self.player.guesses_remaining,
                           "Guesses Remaining")
+
                 if self.player.guesses_remaining == 0:
                     print("Word Fuckery has Defeated YOU!!! \n")
+                    restart = input("Care to play again? (y) or (n)")
+                    if restart == "n":
+                        self.playing = False
+                    elif restart == "y":
+                        Game()
+
+                if '_' not in new_list:
+                    print("Winner, Winner, Chicken Dinner!")
                     restart = input("Care to play again? (y) or (n)")
                     if restart == "n":
                         self.playing = False
